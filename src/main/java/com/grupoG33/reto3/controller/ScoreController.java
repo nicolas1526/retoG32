@@ -4,6 +4,9 @@ import com.grupoG33.reto3.dbo.ReservationDbo;
 import com.grupoG33.reto3.dbo.ScoreDbo;
 import com.grupoG33.reto3.model.ReservationModel;
 import com.grupoG33.reto3.model.ScoreModel;
+import com.grupoG33.reto3.service.ScoreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,17 +15,16 @@ import java.util.List;
 @RequestMapping("/api/Score")
 public class ScoreController {
 
-    //@Autowired
-    //AdminService adminService;
+    @Autowired
+    ScoreService scoreService;
 
     @GetMapping("/all")
-    public List<ScoreModel> obtenerPuntajes(){
-        //return adminService.obtenerAdministradores();
-        return null;
+    public List<ScoreModel> obtener(){
+        return scoreService.obtener();
     }
     @PostMapping("/save")
-    public String crearPuntajes(@RequestBody ScoreDbo score){
-        //return adminService.crearAdministradores(adminModel);
-        return null;
+    @ResponseStatus(HttpStatus.CREATED)
+    public void crear(@RequestBody ScoreModel score){
+        scoreService.crear(score);
     }
 }
