@@ -22,6 +22,7 @@ public class MessageController {
     public List<MessageModel> obtener(){
         return messageService.obtener();
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public void crear(@RequestBody MessageModel message){

@@ -22,7 +22,7 @@ public class GamaModel {
     @Column(length = 250)
     private String description;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "gama")
     private List<CarModel> cars;
 
 }

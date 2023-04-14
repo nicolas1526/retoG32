@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,11 @@ public class MessageModel {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_car", nullable = false)
+    @JsonIgnoreProperties({"messages","reservations"})
     private CarModel car;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_client", nullable = false)
+    @JsonIgnoreProperties({"messages","reservations"})
     private ClientModel client;
 }
