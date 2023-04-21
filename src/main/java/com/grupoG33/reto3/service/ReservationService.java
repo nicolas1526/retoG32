@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.service;
 
+import com.grupoG33.reto3.dbo.ReservationDbo;
 import com.grupoG33.reto3.model.MessageModel;
 import com.grupoG33.reto3.model.ReservationModel;
 import com.grupoG33.reto3.repository.ReservationRepository;
@@ -27,7 +28,7 @@ public class ReservationService {
         reservationRepository.deleteById(id);
     }
 
-    public void actualizar(ReservationModel reservationInput) {
+    public void actualizar(ReservationDbo reservationInput) {
         Optional<ReservationModel> reservationDb = reservationRepository.findById(reservationInput.getIdReservation());
         if(reservationDb.isPresent()){
             ReservationModel reservation = reservationDb.get();

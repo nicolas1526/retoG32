@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.service;
 
+import com.grupoG33.reto3.dbo.MessageDbo;
 import com.grupoG33.reto3.model.GamaModel;
 import com.grupoG33.reto3.model.MessageModel;
 import com.grupoG33.reto3.repository.MessageRepository;
@@ -27,7 +28,7 @@ public class MessageService {
         messageRepository.deleteById(id);
     }
 
-    public void actualizar(MessageModel messageInput) {
+    public void actualizar(MessageDbo messageInput) {
         Optional<MessageModel> messageDb = messageRepository.findById(messageInput.getIdMessage());
         if(messageDb.isPresent()){
             MessageModel message = messageDb.get();

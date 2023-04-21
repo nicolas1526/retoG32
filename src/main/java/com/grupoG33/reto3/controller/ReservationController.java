@@ -34,7 +34,7 @@ public class ReservationController {
     }
 
     @PutMapping("/update")
-    public void actualizar(@RequestBody ReservationModel reservationInput){
+    public void actualizar(@RequestBody ReservationDbo reservationInput){
         reservationService.actualizar(reservationInput);
     }
 }

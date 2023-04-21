@@ -12,6 +12,5 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class ScoreDbo {
     private int idScore;
-    private float value;
-    private ReservationModel reservation;
+    private Integer stars;
 }

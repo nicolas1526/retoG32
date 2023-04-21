@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.service;
 
+import com.grupoG33.reto3.dbo.ScoreDbo;
 import com.grupoG33.reto3.model.ReservationModel;
 import com.grupoG33.reto3.model.ScoreModel;
 import com.grupoG33.reto3.repository.ScoreRepository;
@@ -27,7 +28,7 @@ public class ScoreService {
         scoreRepository.deleteById(id);
     }
 
-    public void actualizar(ScoreModel scoreInput) {
+    public void actualizar(ScoreDbo scoreInput) {
         Optional<ScoreModel> scoreDb = scoreRepository.findById(scoreInput.getIdScore());
         if(scoreDb.isPresent()){
             ScoreModel score = scoreDb.get();

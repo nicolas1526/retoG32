@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.service;
 
+import com.grupoG33.reto3.dbo.CarDbo;
 import com.grupoG33.reto3.model.CarModel;
 import com.grupoG33.reto3.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class CarService {
     }
 
 
-    public void actualizar(CarModel carInput) {
+    public void actualizar(CarDbo carInput) {
         Optional<CarModel> carDB = carRepository.findById(carInput.getIdCar());
         if(carDB.isPresent()){
             CarModel car = carDB.get();
@@ -59,11 +60,5 @@ public class CarService {
             }
             carRepository.save(car);
         }
-
-
-
-
-
-        carRepository.save(carInput);
     }
 }

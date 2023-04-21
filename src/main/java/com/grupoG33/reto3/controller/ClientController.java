@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.controller;
 
+import com.grupoG33.reto3.dbo.ClientDbo;
 import com.grupoG33.reto3.model.CarModel;
 import com.grupoG33.reto3.model.ClientModel;
 import com.grupoG33.reto3.service.ClientService;
@@ -32,7 +33,7 @@ public class ClientController {
     }
 
     @PutMapping("/update")
-    public void actualizar(@RequestBody ClientModel clientInput){
+    public void actualizar(@RequestBody ClientDbo clientInput){
         clientService.actualizar(clientInput);
     }
 }

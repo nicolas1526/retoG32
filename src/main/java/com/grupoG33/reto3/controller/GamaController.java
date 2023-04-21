@@ -35,7 +35,7 @@ public class GamaController {
     }
 
     @PutMapping("/update")
-    public void actualizar(@RequestBody GamaModel gamaInput){
+    public void actualizar(@RequestBody GamaDbo gamaInput){
         gamaService.actualizar(gamaInput);
     }
 }
