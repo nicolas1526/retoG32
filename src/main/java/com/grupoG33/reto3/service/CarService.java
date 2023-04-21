@@ -26,26 +26,5 @@ public class CarService {
         carRepository.save(car);
     }
 
-    public List<CarModel> obtenerPorMarca(String brand){
-        return carRepository.findByBrand(brand);
-    }
-
-    public List<CarModel> obtenerPorMarcaYAño(String brand, int year){
-        return carRepository.findByBrandAndYear(brand,year);
-    }
-
-    public List<CarModel> obtenerPorMarcaOrdenado(String brand){
-        return carRepository.findByBrandOrderByYearDesc(brand);
-    }
-
-    public List<CarModel> obtenerPorMarcaContenido(String value){
-        return carRepository.findByBrandEndsWith(value);
-    }
-
-    public Page<CarModel> obtenerPorPaginas(String brand,int page, int size){
-        Pageable pageable = PageRequest.of(page,size, Sort.by(Sort.Direction.DESC,"year"));
-        return carRepository.findByBrand(brand,pageable);
-    }
-
 
 }

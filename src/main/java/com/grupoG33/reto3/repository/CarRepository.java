@@ -12,24 +12,4 @@ import java.util.List;
 @Repository
 public interface CarRepository extends JpaRepository<CarModel,Integer> {
 
-    List<CarModel> findByBrandContains(String value);
-    List<CarModel> findByBrandStartsWith(String value);
-    List<CarModel> findByBrandEndsWith(String value);
-
-    /*
-    @Query(value = "SELECT * FROM reto3g35.car where brand=? and yyear=?", nativeQuery = true)
-    List<CarModel> obtenerPorMarcaYAño(String brand, int year);*/
-
-    List<CarModel> findByBrand(String brand);
-
-    List<CarModel> findByBrandAndYear(String brand, int year);
-
-    List<CarModel> findByBrandOrderByYearDesc(String brand);
-
-    Page<CarModel> findByBrand(String brand, Pageable pageable);
-
-
-
-
-
 }
