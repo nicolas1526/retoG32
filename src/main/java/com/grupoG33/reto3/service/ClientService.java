@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -21,4 +22,33 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    public void eliminar(int id){
+        clientRepository.deleteById(id);
+    }
+
+    public void actualizar(ClientModel clientInput) {
+        Optional<ClientModel> clientDb = clientRepository.findById(clientInput.getIdClient());
+        if(clientDb.isPresent()){
+            ClientModel client = clientDb.get();
+            if(clientInput.getAge() != null){
+                client.setAge(clientInput.getAge());
+            }
+            if(clientInput.getName() != null){
+                client.setName(clientInput.getName());
+            }
+            if(clientInput.getEmail() != null){
+                client.setEmail(clientInput.getEmail());
+            }
+            if(clientInput.getPassword() != null){
+                client.setPassword(clientInput.getPassword());
+            }
+            if(clientInput.getReservations() != null){
+                client.setReservations(clientInput.getReservations());
+            }
+            if(clientInput.getMessages() != null){
+                client.setMessages(clientInput.getMessages());
+            }
+            clientRepository.save(client);
+        }
+    }
 }

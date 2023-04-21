@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Gama")
@@ -16,7 +17,7 @@ public class GamaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gama")
-    private int idGama;
+    private Integer idGama;
     @Column(length = 45)
     private String name;
     @Column(length = 250)
@@ -24,5 +25,6 @@ public class GamaModel {
 
     @OneToMany(cascade = CascadeType.MERGE, mappedBy = "gama")
     private List<CarModel> cars;
+
 
 }

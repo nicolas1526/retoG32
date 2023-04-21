@@ -26,4 +26,14 @@ public class CarController {
         carService.crear(car);
 
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable int id){
+        carService.eliminar(id);
+    }
+
+    @PutMapping("/update")
+    public void actualizar(@RequestBody CarModel carInput){
+        carService.actualizar(carInput);
+    }
 }

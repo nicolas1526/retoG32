@@ -27,4 +27,14 @@ public class ReservationController {
     public void crear(@RequestBody ReservationModel reservation){
         reservationService.crear(reservation);
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable int id){
+        reservationService.eliminar(id);
+    }
+
+    @PutMapping("/update")
+    public void actualizar(@RequestBody ReservationModel reservationInput){
+        reservationService.actualizar(reservationInput);
+    }
 }

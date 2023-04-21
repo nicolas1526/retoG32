@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageService {
@@ -22,4 +23,24 @@ public class MessageService {
         messageRepository.save(message);
     }
 
+    public void eliminar(int id){
+        messageRepository.deleteById(id);
+    }
+
+    public void actualizar(MessageModel messageInput) {
+        Optional<MessageModel> messageDb = messageRepository.findById(messageInput.getIdMessage());
+        if(messageDb.isPresent()){
+            MessageModel message = messageDb.get();
+            if(messageInput.getMessageText() != null){
+                message.setMessageText(messageInput.getMessageText());
+            }
+            if(messageInput.getCar() != null){
+                message.setCar(messageInput.getCar());
+            }
+            if(messageInput.getClient() != null){
+                message.setClient(messageInput.getClient());
+            }
+            messageRepository.save(message);
+        }
+    }
 }

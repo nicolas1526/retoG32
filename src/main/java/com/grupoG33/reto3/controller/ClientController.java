@@ -1,5 +1,6 @@
 package com.grupoG33.reto3.controller;
 
+import com.grupoG33.reto3.model.CarModel;
 import com.grupoG33.reto3.model.ClientModel;
 import com.grupoG33.reto3.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,15 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public void crear(@RequestBody ClientModel client){
         clientService.crear(client);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable int id){
+        clientService.eliminar(id);
+    }
+
+    @PutMapping("/update")
+    public void actualizar(@RequestBody ClientModel clientInput){
+        clientService.actualizar(clientInput);
     }
 }

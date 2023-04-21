@@ -27,4 +27,14 @@ public class ScoreController {
     public void crear(@RequestBody ScoreModel score){
         scoreService.crear(score);
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable int id){
+        scoreService.eliminar(id);
+    }
+
+    @PutMapping("/update")
+    public void actualizar(@RequestBody ScoreModel scoreInput){
+        scoreService.actualizar(scoreInput);
+    }
 }

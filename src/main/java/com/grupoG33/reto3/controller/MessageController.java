@@ -28,4 +28,14 @@ public class MessageController {
     public void crear(@RequestBody MessageModel message){
         messageService.crear(message);
     }
+
+    @DeleteMapping("/{id}")
+    public void eliminar(@PathVariable int id){
+        messageService.eliminar(id);
+    }
+
+    @PutMapping("/update")
+    public void actualizar(@RequestBody MessageModel messageInput){
+        messageService.actualizar(messageInput);
+    }
 }
