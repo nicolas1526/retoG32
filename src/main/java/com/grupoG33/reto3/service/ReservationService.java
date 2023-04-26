@@ -1,12 +1,18 @@
 package com.grupoG33.reto3.service;
 
+import com.grupoG33.reto3.dbo.RepostStatusDbo;
 import com.grupoG33.reto3.dbo.ReservationDbo;
+import com.grupoG33.reto3.model.ClientModel;
 import com.grupoG33.reto3.model.MessageModel;
 import com.grupoG33.reto3.model.ReservationModel;
+import com.grupoG33.reto3.repository.ClientRepository;
 import com.grupoG33.reto3.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,4 +63,22 @@ public class ReservationService {
     public Optional<ReservationModel> obtenerPorId(int id) {
         return reservationRepository.findById(id);
     }
+
+    public List<ReservationModel> reportDate(String fechaInicio, String fechaFin) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-M-dd");
+        Date fechaInicioDate = format.parse(fechaInicio);
+        Date fechaFinDate = format.parse(fechaFin);
+        if(fechaInicioDate.before(fechaFinDate)){
+            return reservationRepository.findByStartDateBetween(fechaInicioDate,fechaFinDate);
+        }
+        return null;
+    }
+
+    public RepostStatusDbo reportStatus() {
+        Integer coutCompleted = reservationRepository.countByStatus("completed");
+        Integer coutCancelled = reservationRepository.countByStatus("cancelled");
+        return new RepostStatusDbo(coutCompleted,coutCancelled);
+    }
+
+
 }
